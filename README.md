@@ -42,5 +42,6 @@ Enterting Battle Sequence:
 
 How to Battle:
 - Players are given two movesets, Tackle and Fireball (you can choose either or)
+- Upon choosing a move, a dialogue will be outputted. Make sure to click on the dialogue to proceed
 - The goal is to cause the wild monster to faint by lowering it's health to 0 before your monster does
 - Once one of the monsters faint, the battle ends, and the player is taken back to the map interface to continue exploring
