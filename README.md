@@ -20,6 +20,26 @@ Languages Used:
 - There are some CSS Styling, but it is embedded in the HTML file
 
 ## Instructions to Run the Game
--
+If you want to try running the game, follow these instructions:
+1. Download the main branch as a ZIP, you can do this by going to "<> Code" (green button) at the top right of the repository -> then click on "Download ZIP"
+2. Unzip the folder and open the folder. You should see the pokemon-game folder and the README.md
+3. Click inside of the pokemon-game folder and find index.html (don't click on it)
+4. You can right click on the index.html file, and open as a web browser (preferably Google Chrome), or you can drag the index.html file onto a web browser as well
+
+The game should now be up and running! Have fun!
 
 ## Instructions on how to Play
+Player Movement:
+- 'w' key: move up
+- 'a' key: move left
+- 's' key: move down
+- 'd' key: move right
+
+Enterting Battle Sequence:
+- Find dark patches of grass and run around in it
+- There is a slight chance of running into a battle
+
+How to Battle:
+- Players are given two movesets, Tackle and Fireball (you can choose either or)
+- The goal is to cause the wild monster to faint by lowering it's health to 0 before your monster does
+- Once one of the monsters faint, the battle ends, and the player is taken back to the map interface to continue exploring
