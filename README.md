@@ -25,6 +25,7 @@ If you want to try running the game, follow these instructions:
 2. Unzip the folder and open the folder. You should see the pokemon-game folder and the README.md
 3. Click inside of the pokemon-game folder and find index.html (don't click on it)
 4. You can right click on the index.html file, and open as a web browser (preferably Google Chrome), or you can drag the index.html file onto a web browser as well
+5. If you don't hear audio, go ahead and click on the game screen once, and the audo should play!
 
 The game should now be up and running! Have fun!
 
