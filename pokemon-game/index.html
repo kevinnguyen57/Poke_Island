@@ -1,27 +1,36 @@
 <head>
+	<!--embedded code from google fonts called 'Press Start 2P' for the application to look pleasant to read and give a 2D game vibe-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"
 	/>
 	<style>
+		/* Makes all text the font  of Press Start 2P */
 		* {
 			font-family: 'Press Start 2P', cursive;
 		}
 
+		/* Makes the whole background black  */
 		body {
 			background-color: black;
 		}
 
+		/* Makes default h1 margin change to 0, because Google default is greater than 0. We want it to fill the whole screen */
 		h1 {
 			margin: 0;
 		}
 
+		/* create button styling, border being 0 gets rid of border lines on buttons.
+			When cursor points to button, the cursor changes to to indicate that it is clickable.
+			We also change the font size to keep it all the same throughout the code unless told otherwise */
 		button {
 			border: 0;
 			cursor: pointer;
 			font-size: 16px;
 		}
 
+		/* Now whenever we hover over a button, the button background color changes to a lighter gray color
+			to indicate it is interactable */
 		button:hover {
 			background-color: #ddd;
 		}
