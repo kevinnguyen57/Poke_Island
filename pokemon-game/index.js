@@ -58,9 +58,11 @@ battleZonesMap.forEach((row, i) => {
 const image = new Image()
 image.src = './img/Pellet Town.png'
 
+// Creates foreground image to load (images like buildings and trees so the player can walk udner without being seen)
 const foregroundImage = new Image()
 foregroundImage.src = './img/foregroundObjects.png'
 
+// Create each specific player image when players move
 const playerDownImage = new Image()
 playerDownImage.src = './img/playerDown.png'
 
@@ -73,7 +75,9 @@ playerLeftImage.src = './img/playerLeft.png'
 const playerRightImage = new Image()
 playerRightImage.src = './img/playerRight.png'
 
-
+// Creates the player using class Sprite, positions the player in the middle and start in player down position
+// frames to show player movement animation
+// sprites contains all player movement images
 const player = new Sprite({
 	position: {
 		x: canvas.width / 2 - 192 / 4 / 2, 
