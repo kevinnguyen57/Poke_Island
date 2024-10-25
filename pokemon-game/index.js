@@ -54,6 +54,7 @@ battleZonesMap.forEach((row, i) => {
 	})
 })
 
+// Define a new variable to create a new image. This is specifically for our map image and basically let's the img load before it is called
 const image = new Image()
 image.src = './img/Pellet Town.png'
 
@@ -91,6 +92,7 @@ const player = new Sprite({
 	}
 })
 
+// Background calls a new class Sprite to draw our map image
 const background = new Sprite({
 	position: {
 		x: offset.x,
