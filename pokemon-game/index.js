@@ -1,6 +1,10 @@
+// selects our canvas from index.html, then get its context making it a 2D API that draws out everything we need for our game
+// note, we can change 2d to 3d if we were making a 3D game
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d')
 
+// Set our canvas width and height. This is a perfect 16-9 ratio 
+// We can now call our c (canvas) in class.js in our draw functions (to draw out our canvas)
 canvas.width = 1024
 canvas.height = 576
 

@@ -217,6 +217,7 @@ class Boundary {
 		this.height = 48
 	}
 
+	// we call draw() and use c (which is our canvas we defined in index.js) to set our game boundaries 
 	draw() {
 		c.fillStyle = 'rgba(255, 0, 0, 0)'
 		c.fillRect(this.position.x, this.position.y, this.width, this.height)
