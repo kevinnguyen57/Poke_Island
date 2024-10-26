@@ -12,10 +12,10 @@ class Sprite {
 		this.image = new Image()
 		this.frames = {...frames, val: 0, elapsed: 0}
 		this.image.onload = () => {
+			// crop width and height, split in 4's because there are 4 sprite animations for each img
+			// if we look back at index.js where const player is defined, we see that frames is max: 4
 			this.width = this.image.width / this.frames.max
 			this.height = this.image.height
-			// console.log(this.width)
-			// console.log(this.height)
 		}
 		this.image.src = image.src
 
