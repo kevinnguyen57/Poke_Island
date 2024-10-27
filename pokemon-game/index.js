@@ -331,7 +331,10 @@ function animate() {
 }
 // animate()
 
+// we initially want lastKey to be constantly empty. When a key is pressed, it will set that key as pressed (keydown)
+// then becomes empty again because if it isn't, it will infinitely make a key pressed true which results to a bug
 let lastKey = ''
+// listens for an event - keydown -> argument references an arrow function
 window.addEventListener('keydown', (e) => {
 	switch (e.key) {
 		case 'w':
@@ -356,6 +359,8 @@ window.addEventListener('keydown', (e) => {
 	}
 })
 
+// once you let go of pressing a key, all key press will turn to false
+// this will remove any bugs keeping the player to move one direction even when you let go of that specific key
 window.addEventListener('keyup', (e) => {
 	switch (e.key) {
 		case 'w':
