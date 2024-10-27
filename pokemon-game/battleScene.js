@@ -119,10 +119,11 @@ function initBattle() {
 
 		})
 
+		// adds an event listener to our buttons (attack chocies). so when mouse-enter (which means when mouse hover) over buttons, do something
 		button.addEventListener('mouseenter', (e) => {
-			const selectedAttack = attacks[e.currentTarget.innerHTML]
-			document.querySelector('#attackType').innerHTML = selectedAttack.type
-			document.querySelector('#attackType').style.color = selectedAttack.color
+			const selectedAttack = attacks[e.currentTarget.innerHTML]				 // selects our attacks.js file from out inner HTML file
+			document.querySelector('#attackType').innerHTML = selectedAttack.type	 // shows attack types from attacks.js into HTML where id = attackType
+			document.querySelector('#attackType').style.color = selectedAttack.color // also shows its color using style to color the text
 		})
 	})
 }
