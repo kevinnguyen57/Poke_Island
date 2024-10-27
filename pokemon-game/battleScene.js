@@ -33,11 +33,14 @@ function initBattle() {
 		document.querySelector('#attacksBox').append(button)
 	})
 
-	// our event listeners for our buttons (attack)
+	// our event listeners for our buttons (attack), selects all button, and listens for a click on a certain button
 	document.querySelectorAll('button').forEach(button => {
 		button.addEventListener('click', (e) => {
+			// creates a variable called selectedAttack which lets us choose an attack from the choices given
 			const selectedAttack = attacks[e.currentTarget.innerHTML]
 			// emby attacks first (order is important here)
+			// here, we set attack to the variable we just created selectedAttack. Since it has the choice of attack the player chose already
+			// we set it to emby's attack choice
 			emby.attack({ 
 				attack: selectedAttack,
 				recipient: draggle,
@@ -66,8 +69,11 @@ function initBattle() {
 								// makes the black transition div disappear with opacity of 0
 								opacity: 0
 							})
+
 							// battle sequence is now false as we return back to the map for players to move
 							 battle.initiated = false
+
+							 // when you exit out of battle, the audo goes back to the map audio
 							 audio.Map.play()
 						}
 					})
@@ -75,10 +81,12 @@ function initBattle() {
 			}
 
 			// draggle or enemy attacks right here
+			// randomizes draggle's attack choice  using math.floor
 			const randomAttack = 
 				draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
 			// draggle's attack is queued next after emby attacks
+			// we set attack: to the randomize Attack var we just defined
 			queue.push(() => {
 				draggle.attack({
 					attack: randomAttack,
@@ -91,30 +99,34 @@ function initBattle() {
 				// when emby's health is equal to or less than 0, push the faint function in the queue so emby will faint and end the battle
 				// the faint function is defined in class Monsters
 				if (emby.health <= 0) {
-				queue.push(() => {
-					emby.faint()
-				})
-				queue.push(() => {
-					//fade back to black
-					gsap.to('#overlappingDiv', {
-						opacity: 1,
-						onComplete: () => {
-							cancelAnimationFrame(battleAnimationId)
-							animate()
-							document.querySelector('#userInterface').style.display = 'none'
-
-							gsap.to('#overlappingDiv', {
-								opacity: 0
-							})
-
-							battle.initiated = false
-
-							// when you exit out of battle, the audo goes back to the map audio
-							audio.Map.play()
-						}
+					queue.push(() => {
+						emby.faint()
 					})
-				})
-			}
+					queue.push(() => {
+						// fade back to black using gsap
+						gsap.to('#overlappingDiv', {
+							opacity: 1,
+							onComplete: () => {
+								// on completion, cancel the battle animation, and call animate() to animate the map again
+								cancelAnimationFrame(battleAnimationId)
+								animate()
+								// document hides the user interface (ex: health bars and dialogues)
+								document.querySelector('#userInterface').style.display = 'none'
+
+								gsap.to('#overlappingDiv', {
+									// makes the black transition div disappear with opacity of 0
+									opacity: 0
+								})
+
+								// battle sequence is now false as we return back to the map for players to move
+								battle.initiated = false
+
+								// when you exit out of battle, the audo goes back to the map audio
+								audio.Map.play()
+							}
+						})
+					})
+				}
 			})
 
 		})

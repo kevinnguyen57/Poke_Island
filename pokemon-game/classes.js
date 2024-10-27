@@ -149,6 +149,7 @@ class Monster extends Sprite {
 					y: recipient.position.y,
 					onComplete: () => {
 						// Enemy actually gets hit
+						// play fireball hit audio 
 						audio.fireballHit.play()
 						gsap.to(healthbar, {
 							width: recipient.health + '%'
