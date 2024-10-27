@@ -1,19 +1,22 @@
+
+// We store our monster data in a constant variable called monsters
+// if we want to add more monsters to our game, we define them here
 const monsters = {
 	Emby: {
-		position: {
+		position: {		// determine their position here (for battle)
 			x: 285,
 			y: 330
 		},
-		image: {
+		image: {		// Link them to their img sprite 
 			src: './img/embySprite.png'
 		},
 		frames: {
-			max: 4,
+			max: 4,		// set their frames to animate them
 			hold: 30
 		},
 		animate: true,
-		name: 'Emby',
-		attacks: [attacks.Tackle, attacks.Fireball]
+		name: 'Emby',	// name them, and populate their unique attacks
+		attacks: [attacks.Tackle, attacks.Fireball]	
 	},
 	Draggle: {
 		position: {
