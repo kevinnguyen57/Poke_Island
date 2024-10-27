@@ -37,6 +37,7 @@ function initBattle() {
 	document.querySelectorAll('button').forEach(button => {
 		button.addEventListener('click', (e) => {
 			const selectedAttack = attacks[e.currentTarget.innerHTML]
+			// emby attacks first (order is important here)
 			emby.attack({ 
 				attack: selectedAttack,
 				recipient: draggle,
@@ -77,6 +78,7 @@ function initBattle() {
 			const randomAttack = 
 				draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
+			// draggle's attack is queued next after emby attacks
 			queue.push(() => {
 				draggle.attack({
 					attack: randomAttack,
@@ -84,6 +86,10 @@ function initBattle() {
 					renderedSprites
 				})
 
+				// we put this code in after enemy attacks to follow the right order. After enemy attacks and player monsters health is 0
+				// player monster faints
+				// when emby's health is equal to or less than 0, push the faint function in the queue so emby will faint and end the battle
+				// the faint function is defined in class Monsters
 				if (emby.health <= 0) {
 				queue.push(() => {
 					emby.faint()

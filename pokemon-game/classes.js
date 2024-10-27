@@ -97,14 +97,16 @@ class Monster extends Sprite {
 		this.attacks = attacks
 	}
 
+	// where out function animate is created!
 	faint() {
-		document.querySelector('#dialogueBox').innerHTML = this.name + ' fainted!'
+		document.querySelector('#dialogueBox').innerHTML = this.name + ' fainted!' // this will show specific monster has fainted in the dialogue box
 		gsap.to(this.position, {
-			y: this.position.y + 20
+			y: this.position.y + 20		// when monster faints, y position changes to + 20 which drops the monster downwards
 		})
 		gsap.to(this, {
-			opacity: 0 
+			opacity: 0 					// then animates the fainted monster using gsap, and opacity fades to 0  (disapears)
 		})
+		// audio battle stops, and victory audio plays
 		audio.battle.stop()
 		audio.victory.play()
 	}
