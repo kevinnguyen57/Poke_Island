@@ -1,3 +1,6 @@
+
+// create class called Sprite
+// we set its constructor -> whenever creating a new instance of a sprite, call whatever code in constructor 
 class Sprite {
 	constructor({ 
 		position, 

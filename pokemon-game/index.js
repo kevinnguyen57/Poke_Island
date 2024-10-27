@@ -143,6 +143,8 @@ const battle = {
 	initiated: false
 }
 
+// creates function animate to animate player movement
+// request for an animation frame
 function animate() {
 	const animationId = window.requestAnimationFrame(animate)
 	background.draw()
