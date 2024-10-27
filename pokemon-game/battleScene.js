@@ -15,11 +15,11 @@ let battleAnimationId
 let queue
 
 function initBattle() {
-	document.querySelector('#userInterface').style.display = 'block'
-	document.querySelector('#dialogueBox').style.display = 'none'
-	document.querySelector('#enemyHealthBar').style.width = '100%'
-	document.querySelector('#playerHealthBar').style.width = '100%'
-	document.querySelector('#attacksBox').replaceChildren()
+	document.querySelector('#userInterface').style.display = 'block' // shows battle interface 
+	document.querySelector('#dialogueBox').style.display = 'none'    // shows dialogue box 
+	document.querySelector('#enemyHealthBar').style.width = '100%'   // shows health bar of enemy (always at 100% when battle first initiates)
+	document.querySelector('#playerHealthBar').style.width = '100%'	 // shows player health bar (always at 100% when battle first initiates)
+	document.querySelector('#attacksBox').replaceChildren()			 // repopulate attack choices, if not repopulated, will double choices which is a bug
 
 
 	draggle = new Monster(monsters.Draggle)
@@ -43,22 +43,29 @@ function initBattle() {
 				renderedSprites
 			})
 
+			// when draggle's health is equal to or less than 0, push the faint function in the queue so draggle will faint and end the battle
+			// the faint function is defined in class Monsters
 			if (draggle.health <= 0) {
 				queue.push(() => {
 					draggle.faint()
 				})
+				// if Draggle faints, we push the next queue which will animate the screen to transition back to the map
 				queue.push(() => {
-					//fade back to black
+					//fade back to black using gsap
 					gsap.to('#overlappingDiv', {
 						opacity: 1,
 						onComplete: () => {
+							// on completion, cancel the battle animation, and call animate() to animate the map again
 							cancelAnimationFrame(battleAnimationId)
 							animate()
+							// document hides the user interface (ex: health bars and dialogues)
 							document.querySelector('#userInterface').style.display = 'none'
 
 							gsap.to('#overlappingDiv', {
+								// makes the black transition div disappear with opacity of 0
 								opacity: 0
 							})
+							// battle sequence is now false as we return back to the map for players to move
 							 battle.initiated = false
 							 audio.Map.play()
 						}
@@ -95,6 +102,8 @@ function initBattle() {
 							})
 
 							battle.initiated = false
+
+							// when you exit out of battle, the audo goes back to the map audio
 							audio.Map.play()
 						}
 					})
@@ -112,6 +121,9 @@ function initBattle() {
 	})
 }
 
+// creates animateBattle function
+// sets the variable battleAnimationId to request animation frame 'animateBattle' which will load the battle background and draw it to the canvas
+// we then render the msprites (monsters) and draw them on the screen
 function animateBattle() {
 	battleAnimationId = window.requestAnimationFrame(animateBattle)
 	battleBackground.draw()
@@ -121,7 +133,9 @@ function animateBattle() {
 	})
 }
 
+// after the battle sequence is over, we call animate to go back to the main map
 animate()
+
 // initBattle()
 // animateBattle()
 

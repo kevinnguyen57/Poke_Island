@@ -191,6 +191,7 @@ function animate() {
 
 				// where the battle starts, audio map stops
 				// play the battle audio
+				// and battle initiated is now true to let the program know we are in our battle sequence
 				audio.Map.stop()
 				audio.initBattle.play()
 				audio.battle.play()
@@ -383,6 +384,7 @@ window.addEventListener('keyup', (e) => {
 	}
 })
 
+// to start the map audio when game first starts, you have to click on the screen anywhere, and the audio will start playing
 let clicked = false
 addEventListener('click', () => {
 	if (!clicked) {
