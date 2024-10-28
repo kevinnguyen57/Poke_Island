@@ -1,8 +1,9 @@
 
-
+// creats new image as a constant var to laod the battle background image
 const battleBackgroundImage = new Image()
 battleBackgroundImage.src = './img/battleBackground.png'
 const battleBackground = new Sprite({
+	// creates a new sprite class for the battle background image to display on wesbite
 	position: {
 		x: 0,
 		y: 0
