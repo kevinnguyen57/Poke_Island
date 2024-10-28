@@ -1,3 +1,5 @@
+
+
 const battleBackgroundImage = new Image()
 battleBackgroundImage.src = './img/battleBackground.png'
 const battleBackground = new Sprite({
@@ -8,12 +10,14 @@ const battleBackground = new Sprite({
 	image: battleBackgroundImage
 })
 
+// create variables for later use 
 let draggle
 let emby
 let renderedSprites
 let battleAnimationId
 let queue
 
+// create a function called initBattle for when battle is initiated
 function initBattle() {
 	document.querySelector('#userInterface').style.display = 'block' // shows battle interface 
 	document.querySelector('#dialogueBox').style.display = 'none'    // shows dialogue box 
@@ -22,11 +26,12 @@ function initBattle() {
 	document.querySelector('#attacksBox').replaceChildren()			 // repopulate attack choices, if not repopulated, will double choices which is a bug
 
 
-	draggle = new Monster(monsters.Draggle)
-	emby = new Monster(monsters.Emby)
-	renderedSprites = [draggle, emby]
-	queue = []
+	draggle = new Monster(monsters.Draggle)		// Creates a new monster instance everytime we enter battle to reset its health, and populate moves
+	emby = new Monster(monsters.Emby)			// Creates a new monster instance everytime we enter battle to reset its health, and populate moves
+	renderedSprites = [draggle, emby]			// Renders our monsters again when getting into battle
+	queue = []									// queue starts empty to add the right order of a battle sequence
 
+	// for the amount of attacks emby (our monster) has, create a button for it in html id: attacksbox
 	emby.attacks.forEach(attack => {
 		const button = document.createElement('button')
 		button.innerHTML = attack.name
