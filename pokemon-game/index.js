@@ -8,6 +8,8 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
+// Takes the data from collisions.js and implements it to our map so players won't be able to go through walls and water
+// instead of checking the whole collisions list (takes too long), we loop through each maps height which is from i to 70
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 70) {
 	collisionsMap.push(collisions.slice(i, 70 + i))
