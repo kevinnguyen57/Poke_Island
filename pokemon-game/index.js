@@ -22,6 +22,7 @@ for (let i = 0; i < battleZonesData.length; i += 70) {
 	battleZonesMap.push(battleZonesData.slice(i, 70 + i))
 }
 
+// create an empty boundary list to populate the collision points
 const boundaries = []
 const offset = {
 	x: -1312,
@@ -42,6 +43,7 @@ collisionsMap.forEach((row, i) => {
 	})
 })
 
+// create and empty battleZone area list to populate the battle zone points
 const battleZones = []
 
 battleZonesMap.forEach((row, i) => {
