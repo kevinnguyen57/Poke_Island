@@ -113,6 +113,7 @@ const background = new Sprite({
 	image: image
 })
 
+// foreground calls a new Sprite class to draw our trees and roofs so that players are able to walk behind it
 const foreground = new Sprite({
 	position: {
 		x: offset.x,
