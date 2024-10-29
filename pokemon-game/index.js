@@ -24,16 +24,18 @@ for (let i = 0; i < battleZonesData.length; i += 70) {
 
 // create an empty boundary list to populate the collision points
 const boundaries = []
+
+// off set the screen so the map is in the correct position when player spawns
 const offset = {
 	x: -1312,
 	y: -620
 }
 
-collisionsMap.forEach((row, i) => {
+collisionsMap.forEach((row, i) => {			// loops inside of collisionsMap and when we encounter the data 1025, we push that into the list boundaries
 	row.forEach((symbol, j) => {
 		if (symbol === 1025)
 			boundaries.push(
-				new Boundary({
+				new Boundary({				// calls Boundary class to draw the collision positions onto the offset map. Positioned using it as a grid
 					position: {
 						x: j * Boundary.width + offset.x,
 						y: i * Boundary.height + offset.y
