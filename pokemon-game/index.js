@@ -122,6 +122,7 @@ const foreground = new Sprite({
 	image: foregroundImage
 })
 
+// sets all keys (w, a, s, d) to false until player presses down (keydown) onto that specific key
 const keys = {
 	w: {
 		pressed: false
@@ -148,6 +149,7 @@ function rectangularCollision({rectangle1, rectangle2}) {
 	)
 }
 
+// as we start the game, we are not yet in battle, so we set battle initiated to false
 const battle = {
 	initiated: false
 }
