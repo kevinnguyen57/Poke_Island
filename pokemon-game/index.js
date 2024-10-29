@@ -15,6 +15,8 @@ for (let i = 0; i < collisions.length; i += 70) {
 	collisionsMap.push(collisions.slice(i, 70 + i))
 }
 
+// Takes the data from battleZones.js and implements it to our map so players will be able to go through dark grass to encounter a battle
+// instead of checking the whole battleZonesData list (takes too long), we loop through each maps height which is from i to 70
 const battleZonesMap = []
 for (let i = 0; i < battleZonesData.length; i += 70) {
 	battleZonesMap.push(battleZonesData.slice(i, 70 + i))
