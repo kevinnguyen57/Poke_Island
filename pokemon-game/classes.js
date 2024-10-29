@@ -214,6 +214,7 @@ class Monster extends Sprite {
 
 }
 
+// we create a class Boundary to set the collision and battle zone areas 
 class Boundary {
 	static width = 48
 	static height = 48
@@ -224,6 +225,8 @@ class Boundary {
 	}
 
 	// we call draw() and use c (which is our canvas we defined in index.js) to set our game boundaries 
+	// we used fill style to check if our boundaries are in the correct spot (testing code)
+	// if we were to change rgba's last 0 to .5, we'll be able to see the positions the boundaries are at
 	draw() {
 		c.fillStyle = 'rgba(255, 0, 0, 0)'
 		c.fillRect(this.position.x, this.position.y, this.width, this.height)

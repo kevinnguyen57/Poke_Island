@@ -48,11 +48,11 @@ collisionsMap.forEach((row, i) => {			// loops inside of collisionsMap and when 
 // create and empty battleZone area list to populate the battle zone points
 const battleZones = []
 
-battleZonesMap.forEach((row, i) => {
+battleZonesMap.forEach((row, i) => {		// loops inside of battleZonesMap and when we encounter the data 1025, we push that into the list battleZones	
 	row.forEach((symbol, j) => {
 		if (symbol === 1025)
 			battleZones.push(
-				new Boundary({
+				new Boundary({				// calls Boundary class to draw the battleZones positions onto the offset map. Positioned using it as a grid
 					position: {
 						x: j * Boundary.width + offset.x,
 						y: i * Boundary.height + offset.y
