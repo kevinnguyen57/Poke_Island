@@ -165,20 +165,20 @@ const battle = {
 // request for an animation frame
 function animate() {
 	const animationId = window.requestAnimationFrame(animate)
-	background.draw()
+	background.draw()						// draws background map
 	boundaries.forEach((boundary) => {
-		boundary.draw()
+		boundary.draw()						// draws all the boundaries
 	})
 	battleZones.forEach((battleZone) => {
-		battleZone.draw()
+		battleZone.draw()					// draws all the battle zones
 	})
-	player.draw()
-	foreground.draw()
+	player.draw()							// draws player
+	foreground.draw()						// draws foreground layer
 
-	let moving = true
-	player.animate = false
+	let moving = true						// moving is true because player is able to move from the start
+	player.animate = false					// no movable keys pressed yet, so players do not need to be animated
 
-	if (battle.initiated) return
+	if (battle.initiated) return			// if battle sequence is initiated, end this part of the program
 
 	// activate battle
 	if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
