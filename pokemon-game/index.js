@@ -138,8 +138,13 @@ const keys = {
 	}
 }
 
+// creates an array called movables -> the array consist of the background, boundaries, foreground, and battlezones
+// any array with '...' in front is taking all the items and place them directly within this array so 
+// we're not having any 2D arrays happening
+// this array takes our map, boundaries, foreground, and battlezones to move when the player is "moving"
 const movables = [background, ...boundaries, foreground, ...battleZones]
 
+// ?
 function rectangularCollision({rectangle1, rectangle2}) {
 	return (
 		rectangle1.position.x + rectangle1.width >= rectangle2.position.x && 
@@ -348,6 +353,7 @@ function animate() {
 // we initially want lastKey to be constantly empty. When a key is pressed, it will set that key as pressed (keydown)
 // then becomes empty again because if it isn't, it will infinitely make a key pressed true which results to a bug
 let lastKey = ''
+
 // listens for an event - keydown -> argument references an arrow function
 window.addEventListener('keydown', (e) => {
 	switch (e.key) {
