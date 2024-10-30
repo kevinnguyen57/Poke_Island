@@ -181,6 +181,11 @@ function animate() {
 	if (battle.initiated) return			// if battle sequence is initiated, end this part of the program
 
 	// activate battle
+	// check if player is pressing any movable key "w, a, s, d"
+	// if they are, check if the battle zone is on that specific spot
+	// check if the battlezone is the area the player is overlapping
+	// call the rectangularCollision function to check if the players hitbox is touching the dark grass
+	// then, randomize the chance of encountering a battle
 	if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
 		for (let i = 0; i < battleZones.length; i++) {
 			const battleZone = battleZones[i]
@@ -201,7 +206,7 @@ function animate() {
 					rectangle2: battleZone
 				}) &&
 				overlappingArea > (player.width * player.height) / 2 && 
-				Math.random() < 0.01
+				Math.random() < 0.01		// randomize chance of encountering a battle here
 			) {
 
 				// deactivate current animation loop
@@ -214,20 +219,20 @@ function animate() {
 				audio.initBattle.play()
 				audio.battle.play()
 				battle.initiated = true
-				gsap.to('#overlappingDiv', {
+				gsap.to('#overlappingDiv', {		// we take the overlappingDiv, which is our black background in index.html and animate it using gsap
 					opacity: 1,
 					repeat: 3,
 					yoyo: true,
-					duration: 0.4,
+					duration: 0.4,					// we show the black background that covers the screen, and make it go in and out like a yoyo, repeating 3 times for 4 seconds
 					onComplete() {
-						gsap.to('#overlappingDiv', {
+						gsap.to('#overlappingDiv', {	// on complete, we animate the black background again to stay black for 4 seconds
 							opacity: 1,
 							duration: 0.4,
-							onComplete() {
+							onComplete() {				// on complete, we call initBattle and animateBattle to change the map to the battle map
 								// activate a new animation loop
 								initBattle()
 								animateBattle()
-								gsap.to('#overlappingDiv', {
+								gsap.to('#overlappingDiv', {	// we then hide the black background (overlappingDiv)
 									opacity: 0,
 									duration: 0.4
 								})
