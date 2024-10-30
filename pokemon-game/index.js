@@ -144,7 +144,9 @@ const keys = {
 // this array takes our map, boundaries, foreground, and battlezones to move when the player is "moving"
 const movables = [background, ...boundaries, foreground, ...battleZones]
 
-// ?
+//  This function checks if player is touching collision spot
+// This is specifically creating a hitbox around the player (rectangle)
+// and getting its position to see if the collision spot is touching the player in the right spots
 function rectangularCollision({rectangle1, rectangle2}) {
 	return (
 		rectangle1.position.x + rectangle1.width >= rectangle2.position.x && 
