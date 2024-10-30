@@ -240,15 +240,22 @@ function animate() {
 						})
 					}
 				})
+				// after the animation, we break out of the for loop
 				break
 			}
 		}
 	}
 
+	// Now we check if player is trying to move using 'w', 'a', 's', or 'd' 
+	// if player press a moving key, player animate is true
+	// depending on what direction the player is going, player image will equal to the player image going that direction
+	// for example, if w key is pressed, we take the image of the sprite going up
 	if (keys.w.pressed && lastKey === 'w') {
 		player.animate = true
 		player.image = player.sprites.up 
 
+		// Here we check the boundaries, if player is running into forbidden area, we check using rectangularCollision function
+		// and if it's true, moving is now false, and we exit out the loop
 		for (let i = 0; i < boundaries.length; i++) {
 			const boundary = boundaries[i]
 			if (
@@ -268,10 +275,12 @@ function animate() {
 			}
 		}
 
+		// if moving is still true, we move the movables (maps, battlezones, foreground, etc) to give the allusion that the player is moving
 		if (moving)
 			movables.forEach((movable) => {
 				movable.position.y += 3
 		})
+	// then we do the same to the other keys that move the player 
 	} else if (keys.a.pressed && lastKey === 'a') {
 		player.animate = true
 		player.image = player.sprites.left
