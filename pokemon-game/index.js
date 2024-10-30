@@ -371,6 +371,7 @@ function animate() {
 let lastKey = ''
 
 // listens for an event - keydown -> argument references an arrow function
+// When a certain key is pressed (w,a,s,d) for moving, we set that key to true and also set it as the last key pressed, then break out of the switch
 window.addEventListener('keydown', (e) => {
 	switch (e.key) {
 		case 'w':
