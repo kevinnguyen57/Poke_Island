@@ -6,7 +6,7 @@ class Sprite {
 		position, 
 		velocity,
 		image, 
-		frames = { max: 1, hold: 10 }, 
+		frames = { max: 1, hold: 10 }, 	// holds frames for animation on specific sprites
 		sprites, 
 		animate = false,
 		rotation = 0
@@ -29,7 +29,10 @@ class Sprite {
 		this.rotation = rotation
 	}
 
+	// draws the sprite to the screen
 	draw() {
+		// saves the sprite, translates it to rotate it one way and rotate it back
+		// we rotate it for an animation but we need to set it back
 		c.save()
 		c.translate(
 			this.position.x + this.width / 2, 
@@ -52,8 +55,10 @@ class Sprite {
 			this.image.width / this.frames.max,
 			this.image.height
 		)
+		// restores from save to it's orignal
 		c.restore()
 
+		// if animate is not true, get out of this function
 		if (!this.animate) return
 
 		if (this.frames.max > 1) {
