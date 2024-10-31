@@ -61,10 +61,12 @@ class Sprite {
 		// if animate is not true, get out of this function
 		if (!this.animate) return
 
+		// increment frames elapsed to animate each frame correctly
 		if (this.frames.max > 1) {
 			this.frames.elapsed++
 		}
 
+		// when frames elapsed mod frames hold is equal to 0, meaning elapsed counted up to 10 (hold = 10 deault for 10 seconds)
 		if (this.frames.elapsed % this.frames.hold === 0) {
 			if (this.frames.val < this.frames.max - 1) this.frames.val++
 			else this.frames.val = 0
