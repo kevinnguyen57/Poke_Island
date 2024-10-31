@@ -138,6 +138,7 @@ class Monster extends Sprite {
 		// calculate the healthbar of monster that was atatcked by checking the attack damage used
 		recipient.health -= attack.damage
 
+		// check what attack is being used to animate 
 		switch (attack.name) {
 			case 'Fireball':
 				audio.initFireball.play()
