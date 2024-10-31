@@ -67,6 +67,8 @@ class Sprite {
 		}
 
 		// when frames elapsed mod frames hold is equal to 0, meaning elapsed counted up to 10 (hold = 10 deault for 10 seconds)
+		// change the frame val to go to the next only if the val < max frames
+		// if the val is at the max frames, we need to start back at the first frame to continue the cycle animation
 		if (this.frames.elapsed % this.frames.hold === 0) {
 			if (this.frames.val < this.frames.max - 1) this.frames.val++
 			else this.frames.val = 0
