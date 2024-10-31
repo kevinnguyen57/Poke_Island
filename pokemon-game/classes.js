@@ -77,13 +77,13 @@ class Sprite {
 }
 
 // extends our class Sprite above, gives us all the methods available within that class
-// such as draw and attack
+// such as draw and attack and create a new class called Monster for our monster sprites
 class Monster extends Sprite {
 	constructor({
 		position,
 		velocity, 
 		image, 
-		frames = { max: 1, hold: 10 }, 
+		frames = { max: 1, hold: 10 }, 	// holds frames for animation on specific sprites
 		sprites, 
 		animate = false,
 		rotation = 0,
