@@ -120,17 +120,22 @@ class Monster extends Sprite {
 		audio.victory.play()
 	}
 
+	// now when a attack is used, attack is called to display a dialogue box and calcualte health bar update and attack animation
 	attack({attack, recipient, renderedSprites }) {
+		// targets the id from html using # and then outputting '[sprite name] used [attack name]' to the dialogue box
 		document.querySelector('#dialogueBox').style.display = 'block'
 		document.querySelector('#dialogueBox').innerHTML = 
 			this.name + ' used ' + attack.name
 
+		// set the healthbar of which ever monster getting attacked
 		let healthbar = '#enemyHealthBar'
 		if (this.isEnemy) healthbar = '#playerHealthBar'
 
+		// animate the rotation of the monster getting hit
 		let rotation = 1
 		if (this.isEnemy) rotation = -2.2
 
+		// calculate the healthbar of monster that was atatcked by checking the attack damage used
 		recipient.health -= attack.damage
 
 		switch (attack.name) {
