@@ -197,17 +197,19 @@ class Monster extends Sprite {
 						renderedSprites.splice(1, 1)
 					}
 				})
-
 				break
+			// case for Tackle attack
 			case 'Tackle':
+				// we use gsap.timeline to show battle animation in a timing style
 				const tl = gsap.timeline()
 
 				let movementDistance = 20
 				if (this.isEnemy) movementDistance = -20
 
+				// this animates the tackle attack charging
 				tl.to(this.position, {
 					x: this.position.x - movementDistance
-				}).to(this.position, {
+				}).to(this.position, {	// then tackle hits the recipient in their direction fast for .1 second
 					x: this.position.x + movementDistance * 2,
 					duration: 0.1,
 					onComplete: () => {
