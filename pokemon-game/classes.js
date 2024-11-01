@@ -161,15 +161,19 @@ class Monster extends Sprite {
 					animate: true,
 					rotation
 				})
+				// rendering the fireball to the recipient
+				// splice 1 selects emby, 0 selects nothing, and fireball is the element being selected
 				renderedSprites.splice(1, 0, fireball)
-
+				// we now rendered the fireball and now we need to animate it using gsap
 				gsap.to(fireball.position, {
 					x: recipient.position.x,
 					y: recipient.position.y,
 					onComplete: () => {
+						// When animation gsap is completed (fire actually travels to recipient location)
 						// Enemy actually gets hit
 						// play fireball hit audio 
 						audio.fireballHit.play()
+						// then we animate the healthbar going down using gsap and changing the width of recipient health when hit
 						gsap.to(healthbar, {
 							width: recipient.health + '%'
 						})
