@@ -140,7 +140,11 @@ class Monster extends Sprite {
 
 		// check what attack is being used to animate 
 		switch (attack.name) {
+			// case for Fireball attack
 			case 'Fireball':
+				// play the fire ball audio
+				// load the fireball image and draw it by calling new Sprite class
+				// determine the position of the image, and add it's frames to animate the attack and rotate it correctly for a clean look
 				audio.initFireball.play()
 				const fireballImage = new Image()
 				fireballImage.src = './img/fireball.png'
