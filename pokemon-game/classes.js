@@ -178,7 +178,7 @@ class Monster extends Sprite {
 							width: recipient.health + '%'
 						})
 
-						// when fireball htis recipient, recipient goes right and left like a yoyo to make it look like they got hit by a fireball
+						// when fireball hits recipient, recipient goes right and left like a yoyo to make it look like they got hit by a fireball
 						gsap.to(recipient.position, {
 							x: recipient.position.x + 10,
 							yoyo: true,
@@ -213,12 +213,16 @@ class Monster extends Sprite {
 					x: this.position.x + movementDistance * 2,
 					duration: 0.1,
 					onComplete: () => {
+						// when animation for tackle is complete 
 						// Enemy actually gets hit
+						// play the tackle hit audio
 						audio.tackleHit.play()
+						// then we animate the healthbar going down using gsap and changing the width of recipient health when hit
 						gsap.to(healthbar, {
 							width: recipient.health + '%'
 						})
 
+						// when tackle hits recipient, recipient goes right and left like a yoyo to make it look like they got hit by a tackle
 						gsap.to(recipient.position, {
 							x: recipient.position.x + 10,
 							yoyo: true,
@@ -226,6 +230,7 @@ class Monster extends Sprite {
 							duration: 0.08
 						})
 
+						// show more damage by animating using gsap, and changing it's opacity to 0 to 1 5 times to give a cool finish when tackle hits
 						gsap.to(recipient, {
 							opacity: 0,
 							repeat: 5,
@@ -233,6 +238,7 @@ class Monster extends Sprite {
 							duration: 0.08
 						})
 					}
+					// then the monster goes back to it's original position
 				}).to(this.position, {
 					x: this.position.x
 				})
