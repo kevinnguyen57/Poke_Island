@@ -178,6 +178,7 @@ class Monster extends Sprite {
 							width: recipient.health + '%'
 						})
 
+						// when fireball htis recipient, recipient goes right and left like a yoyo to make it look like they got hit by a fireball
 						gsap.to(recipient.position, {
 							x: recipient.position.x + 10,
 							yoyo: true,
@@ -185,12 +186,14 @@ class Monster extends Sprite {
 							duration: 0.08
 						})
 
+						// show more damage by animating using gsap, and changing it's opacity to 0 to 1 5 times to give a cool finish when fireball hits
 						gsap.to(recipient, {
 							opacity: 0,
 							repeat: 5,
 							yoyo: true,
 							duration: 0.08
 						})
+						// now we need to make the fireball disappear by splicing 1 (selects fireball) then another 1 to take it out of the screen
 						renderedSprites.splice(1, 1)
 					}
 				})
