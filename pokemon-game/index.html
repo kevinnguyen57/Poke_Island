@@ -60,7 +60,7 @@
 
 	<!-- right off the bat, we don't want to show the user interfaces (for battle), so we display them as none -->
 	<div id="userInterface" style="display: none;">
-		<!-- Represents health bar of draggle (enemy) -->
+		<!-- Represents health bar of draggle (enemy), we fisrt do the outer outline white box that had a black border around it-->
 		<div 
 			style="
 				background-color: white; 
@@ -72,8 +72,12 @@
 				padding: 12px;
 			"
 		>
+			<!-- We then put the enemy name "Draggle" at the top of the white box we just made, and add it's health in the bottom middle-->
 			<h1 style="font-size: 16px">Draggle</h1>
+			<!-- We say it is a relative position so it woul go inside of the white box -->
 			<div style="position: relative;">
+				<!-- We then create a light greyish color so when green health goes down, we can see the lost health in a cleaner way.
+					and then we can add the green healthbar on top of the light greyish rectangle-->
 				<div style="height: 5px; background-color: #ccc; margin-top: 10px;"></div>
 				<div 
 					id="enemyHealthBar"
